@@ -9,3 +9,8 @@ output "password" {
   description = "SFTP master password"
   sensitive   = true
 }
+
+output "bucket_name" {
+  value       = aws_s3_bucket.input.id
+  description = "Input S3 name"
+}
