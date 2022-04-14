@@ -14,3 +14,8 @@ output "sftp_password" {
   description = "Run `terraform output sftp_password`"
   sensitive   = true
 }
+
+output "s3_bucket_name" {
+  value       = module.sftp.bucket_name
+  description = "S3 name"
+}

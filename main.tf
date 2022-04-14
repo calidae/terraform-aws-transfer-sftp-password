@@ -56,7 +56,7 @@ resource "random_password" "sftp_password" {
 }
 
 data "external" "sftp_password_digest" {
-  program = ["python", "${path.module}/lambda/sftp_auth/index.py", random_password.sftp_password.result]
+  program = ["python3", "${path.module}/lambda/sftp_auth/index.py", random_password.sftp_password.result]
 }
 
 resource "random_pet" "lambda_auth_name" {
