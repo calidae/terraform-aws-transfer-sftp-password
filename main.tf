@@ -55,10 +55,6 @@ resource "random_password" "sftp_password" {
   special = false
 }
 
-data "external" "sftp_password_digest" {
-  program = ["python3", "${path.module}/lambda/sftp_auth/index.py", random_password.sftp_password.result]
-}
-
 resource "random_pet" "lambda_auth_name" {
   length    = 4
   prefix    = "transfer-authentication"
@@ -77,7 +73,7 @@ resource "aws_lambda_function" "sftp_auth" {
 
   environment {
     variables = {
-      TRANSFER_PASSWORD       = data.external.sftp_password_digest.result.digest
+      TRANSFER_PASSWORD       = random_password.sftp_password.result
       TRANSFER_ROLE           = aws_iam_role.sftp.arn
       TRANSFER_HOME_DIRECTORY = "/${aws_s3_bucket.input.id}/"
     }
