@@ -28,3 +28,6 @@ output "sftp_password" {
   sensitive   = true
 }
 ```
+
+There's a branch called _v2_ with another version of this module
+which works without python.
