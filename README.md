@@ -2,11 +2,8 @@
 Create a simple SFTP server with a master password.
 
 The server uses a custom lambda function as the identity
-provider, which will compare the password to a digested
+provider, which will compare the password to the random password
 value and yield a default authorization to a S3 bucket.
-
-The module requires python to digest the generated
-password with the very lambda function code.
 
 ## Example
 
